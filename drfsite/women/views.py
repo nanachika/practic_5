@@ -5,7 +5,7 @@ from .serializers import WomenSerializer
 from rest_framework.permissions import AllowAny
 
 class WomenAPIView(generics.ListAPIView):
-    queryset = Women.objects.all().order_by('id')
+    queryset = Women.objects.filter(is_published=True).order_by('id')
     serializer_class = WomenSerializer
     permission_classes = [AllowAny]
     pagination_class = None
